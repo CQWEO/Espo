@@ -4,8 +4,6 @@ if game.Players.LocalPlayer.PlayerGui:FindFirstChild("TestGui") then
 end
 local faces = {"Front", "Back", "Bottom", "Left", "Right", "Top"}
 local snareParts= {"Void", "Rings", "Base"}
-game.Lighting.GlobalShadows = false
-game.Lighting.OutdoorAmbient = Color3.new(1, 1, 1)
 local text1 = Instance.new("TextLabel")
 local text2 = Instance.new("TextLabel")
 local text3 = Instance.new("TextLabel")
@@ -57,7 +55,7 @@ while true do
                         frame.Size = UDim2.new(1, 0, 1, 0)
                         frame.BorderSizePixel = 0
                         frame.BackgroundTransparency = 0.5
-                        frame.BackgroundColor3 = Color3.new(0, 1, 0)
+                        frame.BackgroundColor3 = Color3.new(1, 1, 9)
                     end
                 end
             end
@@ -170,12 +168,12 @@ while true do
                     end
                 end
             end
-            if o.Assets:FindFirstChild("LeverForGate") then
-                if o.Assets.LeverForGate:FindFirstChild("Main") then
-                    if not o.Assets.LeverForGate.Main:FindFirstChild("SurfaceGui") then
+            if o.Assets:FindFirstChild("Wardrobe") then
+                if o.Assets.Wardrobe:FindFirstChild("Main") then
+                    if not o.Assets.Wardrobe.Main:FindFirstChild("SurfaceGui") then
                         for a = 1, 6 do
                             local surface = Instance.new("SurfaceGui")
-                            surface.Parent = o.Assets.LeverForGate.Main
+                            surface.Parent = o.Assets.Wardrobe.Main
                             surface.AlwaysOnTop = true
                             surface.Face = Enum.NormalId[faces[a]]
                             local frame = Instance.new("Frame", surface)
@@ -189,25 +187,22 @@ while true do
             end
         end
     end
-    if o.:FindFirstChild("RushMoving") then
-                if o.RushMoving:FindFirstChild("RushNew") then
-                    if not o.RushMoving.RushNew:FindFirstChild("SurfaceGui") then
-                        for a = 1, 6 do
-                            local surface = Instance.new("SurfaceGui")
-                            surface.Parent = o.RushMoving.RushNew
-                            surface.AlwaysOnTop = true
-                            surface.Face = Enum.NormalId[faces[a]]
-                            local frame = Instance.new("Frame", surface)
-                            frame.Size = UDim2.new(1, 0, 1, 0)
-                            frame.BorderSizePixel = 0
-                            frame.BackgroundTransparency = 0.5
-                            frame.BackgroundColor3 = Color3.new(0, 0, 1)
+    for i2, o2 in pairs(o.Assets:GetChildren()) do
+                if o2.Name == "Bed" then
+                    for i3, o3 in pairs(o2:GetChildren()) do
+                        for i4, o4 in pairs(Main) do
+                            if o3.Name == o4 and not o3:FindFirstChild("HighlightA") then
+                                local hl = Instance.new("Highlight")
+                                hl.Name = "HighlightA"
+                                hl.Parent = o3
+                                hl.OutlineTransparency = 1
+                                hl.FillTransparency = 0.25
+                                hl.FillColor = Color3.new(1, 0, 0)
+                            end
                         end
                     end
                 end
             end
-        end
-    end
     if game.Workspace.CurrentRooms:FindFirstChild("50") then
         if game.Workspace.CurrentRooms["50"]:FindFirstChild("FigureSetup") then
             if game.Workspace.CurrentRooms["50"].FigureSetup:FindFirstChild("FigureRagdoll") then
