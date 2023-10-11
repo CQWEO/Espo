@@ -194,7 +194,7 @@ while true do
                     if not o.RushMoving.RushNew:FindFirstChild("SurfaceGui") then
                         for a = 1, 6 do
                             local surface = Instance.new("SurfaceGui")
-                            surface.Parent = o.Assets.LeverForGate.Main
+                            surface.Parent = o.RushMoving.RushNew
                             surface.AlwaysOnTop = true
                             surface.Face = Enum.NormalId[faces[a]]
                             local frame = Instance.new("Frame", surface)
