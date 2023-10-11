@@ -4,6 +4,8 @@ if game.Players.LocalPlayer.PlayerGui:FindFirstChild("TestGui") then
 end
 local faces = {"Front", "Back", "Bottom", "Left", "Right", "Top"}
 local snareParts= {"Void", "Rings", "Base"}
+game.Lighting.GlobalShadows = false
+game.Lighting.OutdoorAmbient = Color3.new(1, 1, 1)
 local text1 = Instance.new("TextLabel")
 local text2 = Instance.new("TextLabel")
 local text3 = Instance.new("TextLabel")
@@ -26,7 +28,7 @@ while true do
             if not o.HumanoidRootPart:FindFirstChild("DisplayUserGui") then
                 local dug = Instance.new("BillboardGui")
                 dug.Name = "DisplayUserGui"
-                dug.AlwaysOnTop = true
+                dug.AlwaysOnTop = false
                 dug.Parent = o.HumanoidRootPart
                 dug.Size = UDim2.new(0, 100, 0, 100)
                 local ug = Instance.new("TextLabel")
@@ -55,7 +57,7 @@ while true do
                         frame.Size = UDim2.new(1, 0, 1, 0)
                         frame.BorderSizePixel = 0
                         frame.BackgroundTransparency = 0.5
-                        frame.BackgroundColor3 = Color3.new(1, 1, 9)
+                        frame.BackgroundColor3 = Color3.new(1,7,9)
                     end
                 end
             end
@@ -123,7 +125,7 @@ while true do
                             ug.Parent = dug
                             ug.Size = UDim2.new(0, 50, 0, 50)
                             ug.TextScaled = true
-                            ug.Text = " "
+                            ug.Text = ""
                             ug.BorderSizePixel = 0
                             ug.BackgroundTransparency = 1
                             ug.TextStrokeColor3 = Color3.new(0, 0, 0)
@@ -168,12 +170,12 @@ while true do
                     end
                 end
             end
-            if o.Assets:FindFirstChild("Wardrobe") then
-                if o.Assets.Wardrobe:FindFirstChild("Main") then
-                    if not o.Assets.Wardrobe.Main:FindFirstChild("SurfaceGui") then
+            if CurrentRooms.O.Assets:FindFirstChild("Wardrobe") then
+            if CurrentRooms.O.Assets:FindFirstChild("Main") then
+                    if not CurrentRooms.O.Assets.Wardrobe.Main:FindFirstChild("SurfaceGui") then
                         for a = 1, 6 do
                             local surface = Instance.new("SurfaceGui")
-                            surface.Parent = o.Assets.Wardrobe.Main
+                            surface.Parent = CurrentRooms.O.Assets.Wardrobe.Main
                             surface.AlwaysOnTop = true
                             surface.Face = Enum.NormalId[faces[a]]
                             local frame = Instance.new("Frame", surface)
@@ -187,22 +189,6 @@ while true do
             end
         end
     end
-    for i2, o2 in pairs(o.Assets:GetChildren()) do
-                if o2.Name == "Bed" then
-                    for i3, o3 in pairs(o2:GetChildren()) do
-                        for i4, o4 in pairs(Main) do
-                            if o3.Name == o4 and not o3:FindFirstChild("HighlightA") then
-                                local hl = Instance.new("Highlight")
-                                hl.Name = "HighlightA"
-                                hl.Parent = o3
-                                hl.OutlineTransparency = 1
-                                hl.FillTransparency = 0.25
-                                hl.FillColor = Color3.new(1, 0, 0)
-                            end
-                        end
-                    end
-                end
-            end
     if game.Workspace.CurrentRooms:FindFirstChild("50") then
         if game.Workspace.CurrentRooms["50"]:FindFirstChild("FigureSetup") then
             if game.Workspace.CurrentRooms["50"].FigureSetup:FindFirstChild("FigureRagdoll") then
